@@ -6,13 +6,13 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdint.h>
 
 #include "common.h"
 #include "image.h"
 
-void write_lump_file(const char lump_filename[], const int *image_data,
-		     const size_t image_data_size, const int width,
-		     const int height)
+void write_lump_file(const char lump_filename[], const int image_data[],
+		     const size_t image_data_size)
 {
 	int fd = open(lump_filename, O_RDWR | O_CREAT, 0644);
 
@@ -23,7 +23,7 @@ void write_lump_file(const char lump_filename[], const int *image_data,
 
 	FILE *fp = fopen(lump_filename, "wb+");
 
-	for (int i = 0; i < image_data_size; i++) {
+	for (unsigned int i = 0; i < image_data_size; i++) {
 		fputc(image_data[i], fp);
 	}
 
@@ -41,9 +41,12 @@ void build_palette(const char *image_filename, const char *lump_filename)
 			   &width, &height))
 		error("Error in loading the image\n");
 
-	write_lump_file(lump_filename, image_data, image_data_size, width,
-			height);
+	write_lump_file(lump_filename, image_data, image_data_size);
 	free(image_data);
+
+    if (image_data != NULL) {
+        image_data = NULL;
+    }
 }
 
 int main(int argc, char **argv)

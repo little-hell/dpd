@@ -53,6 +53,5 @@ bool read_png_file(const char filename[], int **image_data,
 			i += 3;
 		}
 	}
-
 	return true;
 }

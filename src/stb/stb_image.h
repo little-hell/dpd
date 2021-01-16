@@ -1,3 +1,11 @@
+#ifdef __GNUC__
+    #pragma GCC diagnostic ignored "-Wno-sign-compare"
+#elif __clang__
+    #pragma clang diagnostic ignored "-Wno-sign-compare"
+#elif _MSC_VER
+    #pragma warning disable warning-list
+#endif
+
 /* stb_image - v2.26 - public domain image loader - http://nothings.org/stb
                                   no warranty implied; use at your own risk
 
