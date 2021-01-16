@@ -55,7 +55,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Prepare vcpkg
-        uses: lukka/run-vcpkg
+        uses: lukka/run-vcpkg@v6
         id: runvcpkg
         with:
           vcpkgArguments: libarchive[core] openssl sqlite3
