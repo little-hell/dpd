@@ -1,10 +1,8 @@
-#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
 #include <stdbool.h>
-//#include <unistd.h>
 #include <fcntl.h>
 #include <stdint.h>
 
