@@ -1,8 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <unistd.h>
-
 #include "image.h"
 #include "common.h"
 
@@ -53,5 +51,6 @@ bool read_png_file(const char filename[], int **image_data,
 			i += 3;
 		}
 	}
+    stbi_image_free(img);
 	return true;
 }

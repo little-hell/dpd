@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
@@ -12,14 +13,11 @@
 void write_lump_file(const char lump_filename[], const int image_data[],
 		     const size_t image_data_size)
 {
-	int fd = open(lump_filename, O_RDWR | O_CREAT, 0644);
-
-	if (fd == -1)
-		error("[write_lump_file] File %s not be opened for reading",
-		      lump_filename);
-	close(fd);
-
 	FILE *fp = fopen(lump_filename, "wb+");
+
+    if (fp == NULL) {
+        error("Something went wrong opening %s for reading.");
+    }
 
 	for (unsigned int i = 0; i < image_data_size; i++) {
 		fputc(image_data[i], fp);
