@@ -23,13 +23,17 @@ target_link_libraries(stb_static m)
 target_compile_definitions(stb_static PUBLIC LIBRARY_HEADER_ONLY)
 set_target_properties(stb_static PROPERTIES LINKER_LANGUAGE C)
 
-add_compile_options(
-    "-Wall"
-    "-Wpedantic"
-    "-Werror"
-    "-Wextra"
-    "-Wunused-function"
-    "-Wredundant-decls")
+if (MSVC)
+    add_compile_options(/W4 /WX)
+else()
+    add_compile_options(
+        -Wall
+        -Wpedantic
+        -Werror
+        -Wextra
+        -Wunused-function
+        -Wredundant-decls)
+endif()
 
 include_directories("lib/")
 set(LIB_FILES "lib/image.c" "lib/image.h" "lib/common.c" "lib/common.h")
