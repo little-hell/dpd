@@ -24,7 +24,7 @@ target_compile_definitions(stb_static PUBLIC LIBRARY_HEADER_ONLY)
 set_target_properties(stb_static PROPERTIES LINKER_LANGUAGE C)
 
 if (MSVC)
-    add_compile_options(/W4 /WX)
+    add_compile_options(/W4)
 else()
     add_compile_options(
         -Wall
