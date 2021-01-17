@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: 'CMake'
       uses: lukka/run-cmake@v2
       with:
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
