@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -7,7 +6,7 @@
 #include "common.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include <stb_image.h>
 
 static void get_pixel(stbi_uc *image, int width, int x, int y, stbi_uc *r,
 		      stbi_uc *g, stbi_uc *b)
@@ -21,15 +20,15 @@ static void get_pixel(stbi_uc *image, int width, int x, int y, stbi_uc *r,
 	*b = pixel[2];
 }
 
-bool read_png_file(const char filename[], int **image_data,
-		   size_t *image_data_size, int *width, int *height)
+int read_png_file(const char filename[], int **image_data,
+		  size_t *image_data_size, int *width, int *height)
 {
 	int channels;
 
 	unsigned char *img = stbi_load(filename, width, height, &channels, 3);
 
 	if (img == NULL) {
-		return false;
+		return 1;
 	}
 
 	printf("Loaded image with a width of %dpx, a height of %dpx and %d channels\n",
@@ -53,5 +52,5 @@ bool read_png_file(const char filename[], int **image_data,
 			i += 3;
 		}
 	}
-	return true;
+	return 0;
 }

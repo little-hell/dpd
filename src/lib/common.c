@@ -11,7 +11,6 @@ void error(char *error, ...)
 	vprintf(error, argptr);
 	printf("\n");
 	va_end(argptr);
-	exit(1);
 }
 
 void help(char *error, ...)
@@ -22,5 +21,4 @@ void help(char *error, ...)
 
 	printf("Usage: lumpy [OPTION] ... [INPUT] ... [OUTPUT]\n");
 	va_end(argptr);
-	exit(1);
 }
