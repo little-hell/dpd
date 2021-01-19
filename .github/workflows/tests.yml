@@ -2,34 +2,6 @@ name: tests
 on: [push]
 
 jobs:
-  windows:
-    runs-on: windows-latest
-    steps:
-
-    - uses: actions/checkout@v2
-
-    - name: 'Build with Visual Studio 2019'
-      uses: lukka/run-cmake@v2
-      with:
-        cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        buildDirectory: "${{ github.workspace }}/../../_temp/windows"
-        cmakeBuildType: Release
-        buildWithCMake: true
-        cmakeGenerator: VS16Win64
-
-    - name: 'Build with Ninja'
-      uses: lukka/run-cmake@v2
-      with:
-        cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        buildDirectory: "${{ github.workspace }}/../../_temp/windows"
-        cmakeBuildType: Release
-        buildWithCMake: true
-        cmakeGenerator: Ninja
-
-    #- name: 'Run CTest'
-    #run: ctest -C Release
-    #working-directory: "${{ github.workspace }}/../../_temp/windows"
-
   linux:
     runs-on: ubuntu-latest
     steps:
