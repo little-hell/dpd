@@ -6,7 +6,7 @@
 #include "common.h"
 
 #define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+#include "stb_image.h"
 
 static void get_pixel(stbi_uc *image, int width, int x, int y, stbi_uc *r,
 		      stbi_uc *g, stbi_uc *b)

@@ -9,7 +9,7 @@
 int write_lump_file(const char lump_filename[], const int image_data[],
 		    const size_t image_data_size)
 {
-	int fd = open(lump_filename, O_CREAT | O_EXCL | O_WRONLY);
+	int fd = open(lump_filename, O_CREAT | O_EXCL | O_WRONLY, 0644);
 
 	if (fd == -1) {
 		return 1;
