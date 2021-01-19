@@ -17,20 +17,3 @@ jobs:
     #- name: 'Run CTest'
     #run: ctest -C Release
     #working-directory: "${{ github.workspace }}/../../_temp/linux"
-
-  macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@main
-    - name: 'CMake'
-      uses: lukka/run-cmake@main
-      with:
-        cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        cmakeBuildType: Release
-        buildDirectory: "${{ github.workspace }}/../../_temp/macos"
-        buildWithCMake: true
-
-    #- name: 'Run CTest'
-    #run: ctest -C Release
-    #working-directory: "${{ github.workspace }}/../../_temp/macos"
-
